@@ -1,0 +1,31 @@
+.card-title {
+  font-size: 20px;
+}
+
+.card-subtitle {
+
+}
+
+.card-header {
+  background-color: rgb(64 139 236 / 30%);
+}
+
+.card-content {
+  background-color: rgb(64 139 236 / 30%);
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 18px !important;
+}
+
+.card-precio {
+  font-size: 24px;
+  color: #1976d2;
+}
+
+.card-image {
+  padding: 20px 0;
+}

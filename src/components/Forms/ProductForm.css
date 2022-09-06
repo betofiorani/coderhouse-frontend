@@ -1,0 +1,8 @@
+.form-producto {
+  margin-top: 20px;
+}
+
+.input-horizontal {
+  display: flex;
+  column-gap: 20px;
+}
