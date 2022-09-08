@@ -14,7 +14,7 @@ const Item = styled(Paper)(({ theme }) => ({
 const Home = props => {
   return (
     <div className='home'>
-      <h4>Productos</h4>
+      <h4>Productos - mapeo de peticiones</h4>
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid item xs={6} lg={4}>
           <Item className='item-container home-item-container'>
@@ -72,7 +72,7 @@ const Home = props => {
           </Item>
         </Grid>
       </Grid>
-      <h4>Carritos</h4>
+      <h4>Carritos - mapeo de peticiones</h4>
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid item xs={6} lg={4}>
           <Item className='item-container home-item-container'>
