@@ -21,9 +21,9 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const Product = ({producto}) => {
+const Product = ({producto , shoppingCartHandlers}) => {
   return (
-    <Grid item xs={6}>
+    <Grid item xs={6} md={4} lg={4}>
       <Item>
         <Card sx={{ width: '100%' }}>
           <CardHeader
@@ -49,7 +49,10 @@ const Product = ({producto}) => {
           <CardActions className='card-actions'>
             <span className='card-precio'>${producto.precio}</span>
             <Button 
-              variant='contained' 
+              variant='contained'
+              onClick={() => {
+                shoppingCartHandlers.addProduct(producto.id)} 
+              }
               color="primary" 
               startIcon={<AddShoppingCartIcon />}
               >

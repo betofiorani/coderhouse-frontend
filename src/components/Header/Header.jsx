@@ -1,15 +1,12 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Appbar from '../Appbar/Appbar'
 
-const Header = props => {
+const Header = ({shoppingCart, shoppingCartHandlers}) => {
   return (
     <div>
-      <Appbar />
+      <Appbar shoppingCart={shoppingCart} shoppingCartHandlers={shoppingCartHandlers}/>
     </div>
   )
 }
-
-Header.propTypes = {}
 
 export default Header

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,15 +12,57 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './Appbar.css'
+import { Modal } from '@mui/material';
+import ShoppingCartDetail from '../ShoppingCartDetail/ShoppingCartDetail';
 
 const pages = [{title:'Products', path:'productos'}, {title:'Chat', path:'chat'}, {title:"ABM Products", path:'admin/productos'}];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-const Appbar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+const modalStyle = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 500,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 2,
+};
+
+const Appbar = ({shoppingCart, shoppingCartHandlers}) => {
+  
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [cartInfo, setCartInfo] = useState({monto: 0, cantidad:0})
+  const [openModal, setOpenModal] = useState({open:false});
+
+  useEffect(() => {
+    
+    const buildCartInfo = async () => {
+      if(!shoppingCart){
+        setCartInfo({monto: 0, cantidad:0})
+      } else {
+        let monto = 0
+        let cantidad = 0
+        await shoppingCart.productos.forEach(producto => {
+          monto = monto + producto.precio
+          cantidad = cantidad + 1
+        })
+        setCartInfo({monto, cantidad})
+      }
+    } 
+
+    buildCartInfo()
+
+  }, [shoppingCart])
+  
+
+
+  console.log("desde APPBAR", shoppingCart?.productos)
 
   const navigate = useNavigate()
 
@@ -38,6 +80,10 @@ const Appbar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleOpenShoppingCart = () => setOpenModal({open:true});
+  const handleModalClose = () => setOpenModal({open:false});
+
 
   return (
     <AppBar position="static">
@@ -133,7 +179,14 @@ const Appbar = () => {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0, display: 'flex' }}>
+            <div className='shopping-cart'>
+              <IconButton onClick={handleOpenShoppingCart} sx={{ p: 0 }}>
+                <ShoppingCartIcon />
+                <span className='cantidad-carrito'>{cartInfo.cantidad}</span>
+              </IconButton>
+              <span>${cartInfo.monto}</span>
+            </div>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -164,6 +217,14 @@ const Appbar = () => {
           </Box>
         </Toolbar>
       </Container>
+      <Modal
+        open={openModal && openModal.open}
+        onClose={handleModalClose}
+      >
+        <Box sx={modalStyle}>
+          <ShoppingCartDetail shoppingCart={shoppingCart} handleModalClose={handleModalClose} shoppingCartHandlers={shoppingCartHandlers} />
+        </Box>       
+      </Modal>
     </AppBar>
   );
 };

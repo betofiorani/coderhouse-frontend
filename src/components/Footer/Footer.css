@@ -1,0 +1,37 @@
+.footer {
+  display: flex;
+  background-color: #1976d2;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 10px;
+  color: white;
+}
+
+.footer p {
+  font-size: 14px;
+}
+
+.footer span {
+  color: yellow;
+  font-weight: bold;
+}
+
+.footer svg {
+  color: white;
+}
+
+.footer-redes {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.footer-redes a {
+  text-decoration: none;
+  padding: 6px;
+}
+
+.footer-redes a:hover {
+  background-color: rgb(21 21 18);
+  border-radius: 50px;
+}
