@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout/Layout';
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
 import Chat from './pages/Chat/Chat';
 import Products from './pages/Products/Products';
 import AbmProducto from './pages/AbmProducto/AbmProducto';

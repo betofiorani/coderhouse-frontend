@@ -105,7 +105,7 @@ const Appbar = ({shoppingCart, shoppingCartHandlers}) => {
                 textDecoration: 'none',
               }}
             >
-              FINAL PROYECT
+              BETO COMMERCE
             </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton

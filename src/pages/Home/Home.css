@@ -1,0 +1,51 @@
+.home {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.home-item-image {
+  justify-content: center;
+  padding: 0px !important;
+}
+
+.home-item-container {
+  padding: 15px !important;
+}
+.home h4 {
+  text-align: center;
+  text-transform: uppercase;
+}
+.method {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.get {
+  color: green;
+}
+
+.post {
+  color: #ff9800;
+}
+
+.put {
+  color: blue
+}
+
+.delete {
+  color: red
+}
+
+.home-item-description {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.path {
+  font-weight: bold;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #1976d2;
+  margin-bottom: 3px;
+}
