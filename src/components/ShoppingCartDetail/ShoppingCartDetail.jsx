@@ -14,7 +14,9 @@ const ShoppingCartDetail = ({shoppingCart, shoppingCartHandlers, handleModalClos
       </div>
       <div className='cart-item-container'>
         {
-          shoppingCart && shoppingCart.productos.map(producto => <ShoppingCartDetailItem producto={producto} deleteHandler={shoppingCartHandlers && shoppingCartHandlers.deleteProduct}/>)
+          shoppingCart 
+          ? shoppingCart.productos.map(producto => <ShoppingCartDetailItem producto={producto} deleteHandler={shoppingCartHandlers && shoppingCartHandlers.deleteProduct}/>)
+          : "no hay productos en el carrito"
         }
       </div>
       <div className='modal-footer'>
