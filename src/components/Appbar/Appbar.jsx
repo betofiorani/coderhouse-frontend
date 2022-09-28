@@ -49,7 +49,7 @@ const Appbar = ({shoppingCart, shoppingCartHandlers}) => {
         let monto = 0
         let cantidad = 0
         await shoppingCart.productos.forEach(producto => {
-          monto = monto*1 + producto.precio*1
+          monto = monto*1 + producto.productoId.price*1
           cantidad = cantidad + 1
         })
         setCartInfo({monto, cantidad})

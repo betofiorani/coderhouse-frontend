@@ -10,11 +10,10 @@ const headers = {
 const newShoppingCart = async () => {
 
   const {data} = await axios.post(`${baseUrl}/api/carrito`,{headers})
-
   return data
 }
 
-const addProductShoppingCart = async (shoppingCartId,productId) => {
+const addProductShoppingCart = async (shoppingCartId, productId) => {
 
   const {data} = await axios.post(`${baseUrl}/api/carrito/${shoppingCartId}/productos`,{productId},{headers})
   return data

@@ -1,5 +1,4 @@
 import React, {useEffect,useState} from 'react'
-import PropTypes from 'prop-types'
 import './ProductForm.css'
 import { Button, TextField } from '@mui/material'
 import { getProductById } from '../../services/productService'
@@ -7,13 +6,12 @@ import { getProductById } from '../../services/productService'
 const ProductForm = ({productoIdElegido, action, submitHandler}) => {
 
   const initialValues = {
-    id:"",
-    codigo: "",
-    nombre: "",
-    descripcion: "",
-    foto: "",
+    code: "",
+    title: "",
+    description: "",
+    thumbnail: "",
     timestamp: "",
-    precio: "",
+    price: "",
     stock: ""
   }
 
@@ -24,7 +22,6 @@ const ProductForm = ({productoIdElegido, action, submitHandler}) => {
     if(action !== "new"){
       const getProduct = async () =>{ 
         const producto = await getProductById(productoIdElegido)
-        console.log("desde useEffect", producto)
         setNuevoProducto(producto[0])
       }
   
@@ -43,11 +40,10 @@ const ProductForm = ({productoIdElegido, action, submitHandler}) => {
           sx={{marginBottom: '15px'}}
           required
           id="outlined-codigo"
-          label="código"
-          value={nuevoProducto.codigo}
+          label="code"
+          value={nuevoProducto.code}
           onChange={(e) => {
-            console.log ("cambio", e.target.value)
-            let productoAux = {...nuevoProducto, codigo: e.target.value } 
+            let productoAux = {...nuevoProducto, code: e.target.value } 
             setNuevoProducto(productoAux)}
           }
         />
@@ -56,11 +52,10 @@ const ProductForm = ({productoIdElegido, action, submitHandler}) => {
           required
           id="outlined-nombre"
           fullWidth
-          label="nombre"
-          value={nuevoProducto.nombre}
+          label="title"
+          value={nuevoProducto.title}
           onChange={(e) => {
-            console.log ("nombre", e.target.value)
-            let productoAux = {...nuevoProducto, nombre: e.target.value } 
+            let productoAux = {...nuevoProducto, title: e.target.value } 
             setNuevoProducto(productoAux)}
           }
         />
@@ -69,10 +64,10 @@ const ProductForm = ({productoIdElegido, action, submitHandler}) => {
           required
           id="outlined-descripcion"
           fullWidth
-          label="descripcion"
-          value={nuevoProducto.descripcion}
+          label="description"
+          value={nuevoProducto.description}
           onChange={(e) => {
-            let productoAux = {...nuevoProducto, descripcion: e.target.value } 
+            let productoAux = {...nuevoProducto, description: e.target.value } 
             setNuevoProducto(productoAux)}
           }
         />
@@ -81,10 +76,10 @@ const ProductForm = ({productoIdElegido, action, submitHandler}) => {
           required
           id="outlined-foto"
           fullWidth
-          label="url foto"
-          value={nuevoProducto.foto}
+          label="url thumbnail"
+          value={nuevoProducto.thumbnail}
           onChange={(e) => {
-            let productoAux = {...nuevoProducto, foto: e.target.value } 
+            let productoAux = {...nuevoProducto, thumbnail: e.target.value } 
             setNuevoProducto(productoAux)}
           }
         />
@@ -93,10 +88,10 @@ const ProductForm = ({productoIdElegido, action, submitHandler}) => {
             sx={{marginBottom: '15px'}}
             required
             id="outlined-precio"
-            label="precio"
-            value={nuevoProducto.precio}
+            label="price"
+            value={nuevoProducto.price}
             onChange={(e) => {
-              let productoAux = {...nuevoProducto, precio: e.target.value } 
+              let productoAux = {...nuevoProducto, price: e.target.value } 
               setNuevoProducto(productoAux)}
             }
           />  
@@ -124,7 +119,5 @@ const ProductForm = ({productoIdElegido, action, submitHandler}) => {
     </div>
   )
 }
-
-ProductForm.propTypes = {}
 
 export default ProductForm

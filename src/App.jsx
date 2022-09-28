@@ -21,25 +21,24 @@ function App() {
       let shoppingCartUpdated
       
       if(!shoppingCartAux){
-        // creamos un nuevo carrito y obtenemos su id.
         const {shoppingCartId} = await newShoppingCart()
         await addProductShoppingCart(shoppingCartId, productId)
         shoppingCartUpdated = await getProductShoppingCart(shoppingCartId)
       }
       else {
-        await addProductShoppingCart(shoppingCartAux.id, productId)
-        shoppingCartUpdated = await getProductShoppingCart(shoppingCartAux.id)
+        await addProductShoppingCart(shoppingCartAux._id, productId)
+        shoppingCartUpdated = await getProductShoppingCart(shoppingCartAux._id)
       }
       alertWithTimer(`Product added Successfully`,"success", 1500, "")
-      setShoppingCart(shoppingCartUpdated)
+      setShoppingCart(shoppingCartUpdated[0])
     },
     deleteProduct: async productId => {
       const shoppingCartAux = shoppingCart
 
-      await deleteProductShoppingCart(shoppingCartAux.id, productId)
-      const shoppingCartUpdated = await getProductShoppingCart(shoppingCartAux.id)
+      await deleteProductShoppingCart(shoppingCartAux._id, productId)
+      const shoppingCartUpdated = await getProductShoppingCart(shoppingCartAux._id)
       simpleAlert(`Product deleted Successfully`,"success")
-      setShoppingCart(shoppingCartUpdated)
+      setShoppingCart(shoppingCartUpdated[0])
     },
     deleteCart: async (id) => {
       

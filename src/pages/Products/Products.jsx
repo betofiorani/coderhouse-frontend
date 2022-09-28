@@ -39,7 +39,7 @@ const Products = ({shoppingCartHandlers}) => {
         </div>
       </div>
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 3 }}>
-        {productos && productos.map(producto => <Product key={producto.id} producto={producto} shoppingCartHandlers={shoppingCartHandlers} />)}
+        {productos && productos.map(producto => <Product key={producto._id} producto={producto} shoppingCartHandlers={shoppingCartHandlers} />)}
       </Grid>
     </Box>
   )

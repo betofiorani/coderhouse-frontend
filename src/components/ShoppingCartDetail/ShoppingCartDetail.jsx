@@ -15,7 +15,7 @@ const ShoppingCartDetail = ({shoppingCart, shoppingCartHandlers, handleModalClos
       <div className='cart-item-container'>
         {
           shoppingCart 
-          ? shoppingCart.productos.map(producto => <ShoppingCartDetailItem producto={producto} deleteHandler={shoppingCartHandlers && shoppingCartHandlers.deleteProduct}/>)
+          ? shoppingCart.productos.map((producto, index) => <ShoppingCartDetailItem key={`${producto.productoId}-${index}`} producto={producto.productoId} deleteHandler={shoppingCartHandlers && shoppingCartHandlers.deleteProduct}/>)
           : "no hay productos en el carrito"
         }
       </div>
@@ -24,7 +24,7 @@ const ShoppingCartDetail = ({shoppingCart, shoppingCartHandlers, handleModalClos
           variant='contained'
           onClick={() => {
             handleModalClose()
-            shoppingCartHandlers.deleteCart(shoppingCart.id)
+            shoppingCartHandlers.deleteCart(shoppingCart._id)
             }
           }
         >

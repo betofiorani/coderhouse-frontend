@@ -33,25 +33,25 @@ const Product = ({producto , shoppingCartHandlers}) => {
                 <MoreVertIcon />
               </IconButton>
             }
-            title={producto.nombre}
-            subheader={producto.codigo}
+            title={producto.title}
+            subheader={producto.code}
           />
           <CardActionArea>
             <div className='card-image'>
-              <img src={producto.foto} alt={producto.nombre}/>
+              <img src={producto.thumbnail} alt={producto.title}/>
             </div>
             <CardContent className='card-content'>
               <Typography className="card-description" variant="body2" color="text.secondary">
-                {producto.descripcion}
+                {producto.description}
               </Typography>
             </CardContent>
           </CardActionArea>
           <CardActions className='card-actions'>
-            <span className='card-precio'>${producto.precio}</span>
+            <span className='card-precio'>${producto.price}</span>
             <Button 
               variant='contained'
               onClick={() => {
-                shoppingCartHandlers.addProduct(producto.id)} 
+                shoppingCartHandlers.addProduct(producto._id)} 
               }
               color="primary" 
               startIcon={<AddShoppingCartIcon />}

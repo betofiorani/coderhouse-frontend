@@ -64,7 +64,7 @@ const AbmProducts = props => {
               
               if(response.status === "ok") {
                 
-                let productosAux = productos.filter(producto => parseInt(producto.id) !== parseInt(productId))
+                let productosAux = productos.filter(producto => producto._id !== productId)
                 
                 setProductos(productosAux)
                 setProductoIdElegido("")
@@ -120,22 +120,20 @@ const AbmProducts = props => {
       // aca hago un put
       try {
         const productUpdated = await updateProduct(productData)
-        console.log("desde update", productUpdated)
         
-        let productosAux = productos.filter(producto => parseInt(producto.id) !== parseInt(productUpdated[0].id))
-        productosAux.push(productUpdated[0])
+        let productosAux = productos.filter(producto => producto._id !== productUpdated._id)
+        productosAux.push(productUpdated)
         setProductos(productosAux)
         handleModalClose()
         Swal.fire({
           icon: 'success', 
           title: `<p>Product updated</p>`,
           text: "Product updated successfully",
-      })
-
-      } catch (error) {
+        })
+      } 
+      catch (error) {
         console.log(error)
       }
-
     }
   }
 
@@ -163,7 +161,7 @@ const AbmProducts = props => {
         </div>
       </div>
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        {productos && productos.map(producto => <AbmProductItem key={producto.id} producto={producto} editClickHandler={editClickHandler} deleteClickHandler={deleteClickHandler} />)}
+        {productos && productos.map(producto => <AbmProductItem key={producto._id} producto={producto} editClickHandler={editClickHandler} deleteClickHandler={deleteClickHandler} />)}
       </Grid>
       <Modal
         open={openModal && openModal.open}

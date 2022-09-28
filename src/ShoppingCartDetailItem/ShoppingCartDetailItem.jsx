@@ -5,21 +5,18 @@ import { IconButton } from '@mui/material';
 
 const ShoppingCartDetailItem = ({producto, deleteHandler}) => {
 
-  console.log("desde item", producto)
-  console.log("desde item delete", deleteHandler)
-
   return (
     <div className='shopping-cart-item'>
       <div className='item-image'>
-        <img src={producto.foto} alt={producto.nombre}/>
+        <img src={producto.thumbnail} alt={producto.title}/>
       </div>
-      <div className='product-info'>{producto.nombre}</div>
+      <div className='product-info'>{producto.title}</div>
       <div className='price-info'>
         <span className='item-cantidad'>1u</span>
-        <span className='item-precio'>${producto.precio}</span>
+        <span className='item-precio'>${producto.price}</span>
       </div>
       <div className='btn-delete'>
-        <IconButton onClick={() => deleteHandler(producto.id)}>
+        <IconButton onClick={() => deleteHandler(producto._id)}>
           <DeleteForeverIcon />
         </IconButton>
       </div>
