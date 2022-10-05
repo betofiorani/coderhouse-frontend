@@ -11,6 +11,7 @@
 
 .home-item-container {
   padding: 15px !important;
+  flex-direction: column;
 }
 .home h4 {
   text-align: center;
@@ -48,4 +49,8 @@
   text-transform: uppercase;
   color: #1976d2;
   margin-bottom: 3px;
+}
+
+.card-container {
+  padding-left: 10px !important;
 }

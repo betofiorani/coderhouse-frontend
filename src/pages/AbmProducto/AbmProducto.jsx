@@ -102,9 +102,7 @@ const AbmProducts = props => {
       try {
         const newProducto = await createProduct(productData)
         
-        let productosAux = productos
-        productosAux.push(newProducto)
-        setProductos(productosAux)
+        setProductos(productos => [...productos, newProducto])
         handleModalClose()
         Swal.fire({
           icon: 'success', 
