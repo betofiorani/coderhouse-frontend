@@ -18,7 +18,7 @@ import './Appbar.css'
 import { Modal } from '@mui/material';
 import ShoppingCartDetail from '../ShoppingCartDetail/ShoppingCartDetail';
 
-const pages = [{title:'Products', path:'productos'}, {title:'Chat', path:'chat'}, {title:"ABM Products", path:'admin/productos'}];
+const pages = [{title:'Products', path:'productos'}, {title:'Chat', path:'chat'}, {title:"ABM Products", path:'admin/productos'},{title:'Faker Products', path:'faker-productos'}];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const modalStyle = {

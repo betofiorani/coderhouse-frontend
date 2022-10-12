@@ -1,0 +1,20 @@
+.new-message {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.chat-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat-form input {
+    padding: 10px !important;
+}
+
+.chat-form-item {
+    display: flex;
+    justify-content: space-between;
+}

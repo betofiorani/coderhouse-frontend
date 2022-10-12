@@ -1,0 +1,13 @@
+.avatar-img {
+    text-align: center;
+}
+
+.avatar-img img {
+    width: 20px
+}
+
+.message {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}

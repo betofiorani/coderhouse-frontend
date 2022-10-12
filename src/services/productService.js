@@ -13,12 +13,17 @@ const getProducts = async () => {
   return data
 }
 
+const getFakerProducts = async (cantidad) => {
+
+  const {data} = await axios.get(`${baseUrl}/api/productos-test/${cantidad}`,{headers})
+  return data
+}
+
 const getProductById = async (id) => {
 
   const {data} = await axios.get(`${baseUrl}/api/productos/${id}`,{headers})
   return data
 }
-
 
 const createProduct = async (productData) => {
   
@@ -37,4 +42,4 @@ const deleteProduct = async productId => {
   return data
 }
 
-export {getProducts, createProduct, deleteProduct, getProductById, updateProduct}
+export {getProducts, createProduct, deleteProduct, getProductById, updateProduct, getFakerProducts}

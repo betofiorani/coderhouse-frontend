@@ -1,0 +1,28 @@
+.product-search {
+  width: 100%;
+  display: flex;
+  padding: 20px 0;
+  justify-content: center;
+}
+
+.product-search-input {
+  width: 50%;
+}
+
+.card-image img {
+  width: 128px;
+}
+
+.faker {
+
+}
+
+.faker-header {
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row !important;
+  margin-bottom: 20px;
+}
+
+.faker-textfield {
+}

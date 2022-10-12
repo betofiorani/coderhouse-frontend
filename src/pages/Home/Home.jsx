@@ -16,7 +16,7 @@ const Home = props => {
     <div className='home'>
       <h4>Productos - mapeo de peticiones</h4>
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <Grid item xs={6} lg={4}>
+        <Grid className="card-container" item xs={6} lg={4}>
           <Item className='item-container home-item-container'>
             <div className='item-image home-item-image'>
               <span className='method get'>get</span>
@@ -27,7 +27,7 @@ const Home = props => {
             </div>
           </Item>
         </Grid>
-        <Grid item xs={6} lg={4}>
+        <Grid className="card-container"  item xs={6} lg={4}>
           <Item className='item-container home-item-container'>
             <div className='item-image home-item-image'>
               <span className='method get'>get</span>
@@ -38,7 +38,7 @@ const Home = props => {
             </div>
           </Item>
         </Grid>
-        <Grid item xs={6} lg={4}>
+        <Grid className="card-container" item xs={6} lg={4}>
           <Item className='item-container home-item-container'>
             <div className='item-image home-item-image'>
               <span className='method post'>post</span>
@@ -49,7 +49,7 @@ const Home = props => {
             </div>
           </Item>
         </Grid>
-        <Grid item xs={6} lg={4}>
+        <Grid className="card-container" item xs={6} lg={4}>
           <Item className='item-container home-item-container'>
             <div className='item-image home-item-image'>
               <span className='method put'>put</span>
@@ -60,7 +60,7 @@ const Home = props => {
             </div>
           </Item>
         </Grid>
-        <Grid item xs={6} lg={4}>
+        <Grid className="card-container" item xs={6} lg={4}>
           <Item className='item-container home-item-container'>
             <div className='item-image home-item-image'>
               <span className='method delete'>delete</span>
@@ -72,9 +72,23 @@ const Home = props => {
           </Item>
         </Grid>
       </Grid>
+      <h4>FAKER Productos - mapeo de peticiones</h4>
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        <Grid className="card-container" item xs={6} lg={4}>
+          <Item className='item-container home-item-container'>
+            <div className='item-image home-item-image'>
+              <span className='method get'>get</span>
+            </div>
+            <div className='item-info'>
+              <span className='path'>/api/productos-test/:cantidad</span>
+              <span className='home-item-description'>Al hacer click en FAKER PRODUCTS en la barra de navegación a través de axios requerimos al endpoint una lista de productos generados con la librería Faker. La cantidad a generar la elegimos con el input disponible.</span>
+            </div>
+          </Item>
+        </Grid>
+      </Grid>
       <h4>Carritos - mapeo de peticiones</h4>
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <Grid item xs={6} lg={4}>
+        <Grid className="card-container" item xs={6} lg={4}>
           <Item className='item-container home-item-container'>
             <div className='item-image home-item-image'>
               <span className='method post'>post</span>
@@ -85,7 +99,7 @@ const Home = props => {
             </div>
           </Item>
         </Grid>
-        <Grid item xs={6} lg={4}>
+        <Grid className="card-container" item xs={6} lg={4}>
           <Item className='item-container home-item-container'>
             <div className='item-image home-item-image'>
               <span className='method post'>post</span>
@@ -96,7 +110,7 @@ const Home = props => {
             </div>
           </Item>
         </Grid>
-        <Grid item xs={6} lg={4}>
+        <Grid className="card-container" item xs={6} lg={4}>
           <Item className='item-container home-item-container'>
             <div className='item-image home-item-image'>
               <span className='method get'>get</span>
@@ -107,7 +121,7 @@ const Home = props => {
             </div>
           </Item>
         </Grid>
-        <Grid item xs={6} lg={4}>
+        <Grid className="card-container" item xs={6} lg={4}>
           <Item className='item-container home-item-container'>
             <div className='item-image home-item-image'>
               <span className='method delete'>delete</span>
@@ -118,7 +132,7 @@ const Home = props => {
             </div>
           </Item>
         </Grid>
-        <Grid item xs={6} lg={4}>
+        <Grid className="card-container" item xs={6} lg={4}>
           <Item className='item-container home-item-container'>
             <div className='item-image home-item-image'>
               <span className='method delete'>delete</span>

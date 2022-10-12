@@ -4,10 +4,14 @@ import Layout from './components/Layout/Layout';
 import Home from './pages/Home/Home';
 import Chat from './pages/Chat/Chat';
 import Products from './pages/Products/Products';
+import FakerProducts from './pages/FakerProducts/FakerProducts';
 import AbmProducto from './pages/AbmProducto/AbmProducto';
 import { newShoppingCart, addProductShoppingCart, getProductShoppingCart, deleteProductShoppingCart, deleteShoppingCart } from './services/shoppingCartService';
 import { alertWithTimer, simpleAlert } from './helpers/alerts';
 import Swal from 'sweetalert2';
+import socketIO from 'socket.io-client';
+
+const socket = socketIO.connect('http://localhost:8080');
 
 function App() {
 
@@ -90,9 +94,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout shoppingCart={shoppingCart} shoppingCartHandlers={shoppingCartHandlers} />}>
           <Route index element={<Home />} />
-          <Route path="/chat" element={<Chat />} />
+          <Route path="/chat" element={<Chat socket={socket} />} />
           <Route path="/productos" element={<Products shoppingCartHandlers={shoppingCartHandlers} />} />
           <Route path="/productos/:id" element={<Products />} />
+          <Route path="/faker-productos" element={<FakerProducts />} />
           <Route path="/admin/productos" element={<AbmProducto />} />
         </Route>
       </Routes>

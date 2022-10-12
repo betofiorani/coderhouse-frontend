@@ -12,10 +12,12 @@
     "@testing-library/user-event": "^13.2.1",
     "axios": "^0.27.2",
     "dotenv": "^16.0.2",
+    "normalizr": "^3.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "socket.io-client": "^4.5.2",
     "sweetalert2": "^11.4.31",
     "web-vitals": "^2.1.0"
   },

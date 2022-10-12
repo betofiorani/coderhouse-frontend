@@ -1,0 +1,22 @@
+.messages {
+    flex: 1;
+}
+
+.percentage {
+    font-size: 30px !important;
+    color: green;
+    font-weight: bold;
+}
+
+.compressed {
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 20px;
+}
