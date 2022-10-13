@@ -5,6 +5,7 @@ const headers = {
   'Content-Type': 'application/json',
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET, PUT, PATCH, POST, DELETE, OPTIONS',
+  'Access-Control-Allow-Credentials': true
 };
 
 const getMessages = async () => {

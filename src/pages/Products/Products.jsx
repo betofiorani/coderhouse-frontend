@@ -6,8 +6,13 @@ import { getProducts } from '../../services/productService';
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import './Products.css'
+import useAuth from '../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const Products = ({shoppingCartHandlers}) => {
+
+  const auth = useAuth()
+  const navigate = useNavigate()
 
   const [productos, setProductos] = useState()
 
@@ -18,7 +23,13 @@ const Products = ({shoppingCartHandlers}) => {
       setProductos(productos)
     }
 
-    getProductos()
+    if(auth.isLogged()){
+      console.log("is logged",auth.isLogged())
+      getProductos()
+    } 
+    else {
+      navigate('/login')
+    }
     
   }, [])
   

@@ -10,6 +10,8 @@ import { newShoppingCart, addProductShoppingCart, getProductShoppingCart, delete
 import { alertWithTimer, simpleAlert } from './helpers/alerts';
 import Swal from 'sweetalert2';
 import socketIO from 'socket.io-client';
+import Login from './pages/Login/Login';
+import AuthProvider from './components/Auth/AuthProvider';
 
 const socket = socketIO.connect('http://localhost:8080');
 
@@ -91,16 +93,19 @@ function App() {
 
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Layout shoppingCart={shoppingCart} shoppingCartHandlers={shoppingCartHandlers} />}>
-          <Route index element={<Home />} />
-          <Route path="/chat" element={<Chat socket={socket} />} />
-          <Route path="/productos" element={<Products shoppingCartHandlers={shoppingCartHandlers} />} />
-          <Route path="/productos/:id" element={<Products />} />
-          <Route path="/faker-productos" element={<FakerProducts />} />
-          <Route path="/admin/productos" element={<AbmProducto />} />
-        </Route>
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Layout shoppingCart={shoppingCart} shoppingCartHandlers={shoppingCartHandlers} />}>
+            <Route index element={<Home />} />
+            <Route path="/chat" element={<Chat socket={socket} />} />
+            <Route path="/productos" element={<Products shoppingCartHandlers={shoppingCartHandlers} />} />
+            <Route path="/productos/:id" element={<Products />} />
+            <Route path="/faker-productos" element={<FakerProducts />} />
+            <Route path="/admin/productos" element={<AbmProducto />} />
+          </Route>
+        </Routes>
+      </AuthProvider>
     </div>
   );
 }

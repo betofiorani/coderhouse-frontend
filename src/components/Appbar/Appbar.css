@@ -25,3 +25,19 @@
   font-size: 10px !important;
   top: 0;
 }
+
+.logout-msg {
+  text-align: center;
+}
+
+.logout-username {
+  font-size: 20px;
+  color: blue;
+  font-weight: bold;
+}
+
+.logout-btn {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}

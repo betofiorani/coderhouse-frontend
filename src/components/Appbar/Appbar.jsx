@@ -17,9 +17,11 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import './Appbar.css'
 import { Modal } from '@mui/material';
 import ShoppingCartDetail from '../ShoppingCartDetail/ShoppingCartDetail';
+import useAuth from '../../hooks/useAuth'
+import { logout } from '../../services/loginService';
+import Swal from 'sweetalert2';
 
 const pages = [{title:'Products', path:'productos'}, {title:'Chat', path:'chat'}, {title:"ABM Products", path:'admin/productos'},{title:'Faker Products', path:'faker-productos'}];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const modalStyle = {
   position: 'absolute',
@@ -33,12 +35,38 @@ const modalStyle = {
   p: 2,
 };
 
+const modalMessageStyle = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 300,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 2,
+};
+
 const Appbar = ({shoppingCart, shoppingCartHandlers}) => {
-  
+
+  const auth = useAuth()
+
+  const settings = [
+    {label:'Profile',clickHandler: () => console.log("soy profile")},
+    {label:'Account',clickHandler: () => console.log("soy account")}, 
+    {label:'Logout',clickHandler: async () => {
+      const response = await logout()
+      setOpenMessage({open: true})
+    }}
+  ];  
+
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [cartInfo, setCartInfo] = useState({monto: 0, cantidad:0})
   const [openModal, setOpenModal] = useState({open:false});
+  const [openMessage, setOpenMessage] = useState({open:false});
+
+
 
   useEffect(() => {
     
@@ -79,6 +107,11 @@ const Appbar = ({shoppingCart, shoppingCartHandlers}) => {
 
   const handleOpenShoppingCart = () => setOpenModal({open:true});
   const handleModalClose = () => setOpenModal({open:false});
+  
+  const handleMessageClose = () => {
+    setOpenMessage({open:false})
+    auth.logout()
+  };
 
 
   return (
@@ -205,8 +238,8 @@ const Appbar = ({shoppingCart, shoppingCartHandlers}) => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem key={setting.label} onClick={() => setting.clickHandler()}>
+                  <Typography textAlign="center">{setting.label}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -219,6 +252,19 @@ const Appbar = ({shoppingCart, shoppingCartHandlers}) => {
       >
         <Box sx={modalStyle}>
           <ShoppingCartDetail shoppingCart={shoppingCart} handleModalClose={handleModalClose} shoppingCartHandlers={shoppingCartHandlers} />
+        </Box>       
+      </Modal>
+      <Modal
+        open={openMessage && openMessage.open}
+        onClose={handleMessageClose}
+      >
+        <Box sx={modalMessageStyle}>
+          <p className='logout-msg'>see you later <span className='logout-username'>{auth && auth.user?.userName}</span></p>
+          <div className='logout-btn'>
+            <Button variant="contained" onClick={() => handleMessageClose()}>
+              Salir
+            </Button>
+          </div>
         </Box>       
       </Modal>
     </AppBar>
