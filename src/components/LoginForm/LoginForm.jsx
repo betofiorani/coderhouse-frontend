@@ -19,7 +19,7 @@ const LoginForm = () => {
             Swal.fire({
                 icon: 'success', 
                 title: `<p>Login Successfully</p>`,
-                text: `welcome ${userData}`,
+                text: `welcome ${userData.user}`,
             }).then(async (res) => {
                 navigate('/')
             })
@@ -43,7 +43,17 @@ const LoginForm = () => {
                 fullWidth
                 label="Usuario"
                 placeholder='ingrese su nombre de usuario'
-                onChange={(e) => setUser(e.target.value)} 
+                onChange={(e) => setUser({user: e.target.value})} 
+            />
+            <TextField 
+                className='login-form m-top-20'
+                variant="filled"
+                type="password"
+                required
+                fullWidth
+                label="Contraseña"
+                placeholder='ingrese su contraseña'
+                onChange={(e) => setUser({password:e.target.value})} 
             />
             <div className='login-buttons'>
                 <Button 

@@ -9,7 +9,7 @@ const headers = {
 };
 
 const login = async (userData) => {
-    const {data} = await axios.post(`${baseUrl}/api/login`,{userName : userData},{headers, withCredentials: true})
+    const {data} = await axios.post(`${baseUrl}/api/login`,{userName : userData.name, password: userData.password},{headers, withCredentials: true})
     return data
 }
 
