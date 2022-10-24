@@ -108,7 +108,7 @@ const AbmProducts = props => {
           icon: 'success', 
           title: `<p>Product Added</p>`,
           text: "new product added successfully",
-      })
+        })
 
       } catch (error) {
         console.log(error)
