@@ -8,6 +8,8 @@ import AbmProductItem from '../../components/AbmProductItem/AbmProductItem';
 import './AbmProducto.css'
 import ProductForm from '../../components/Forms/ProductForm';
 import Swal from 'sweetalert2'
+import useAuth from '../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const modalStyle = {
   position: 'absolute',
@@ -22,6 +24,13 @@ const modalStyle = {
 };
 
 const AbmProducts = props => {
+
+  const auth = useAuth()
+  const navigate = useNavigate()
+
+  if(!auth.isLogged()) {
+    navigate('/login')
+  }
 
   const [productos, setProductos] = useState()
   const [openModal, setOpenModal] = useState({open:false, action: ""});

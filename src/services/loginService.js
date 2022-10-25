@@ -9,13 +9,20 @@ const headers = {
 };
 
 const login = async (userData) => {
-    const {data} = await axios.post(`${baseUrl}/api/login`,{userName : userData.name, password: userData.password},{headers, withCredentials: true})
-    return data
+  console.log("desde login", userData)
+  const {data} = await axios.post(`${baseUrl}/api/login`,userData,{headers, withCredentials: true})
+  return data
+}
+
+const register = async (userData) => {
+  const {data} = await axios.post(`${baseUrl}/api/register`,userData,{headers, withCredentials: true})
+  return data
 }
 
 const logout = async () => {
   const {data} = await axios.get(`${baseUrl}/api/login/logout`,{headers, withCredentials: true})
+  console.log("desde logout", data)
   return data
 }
 
-export {login, logout}
+export {login, logout, register}

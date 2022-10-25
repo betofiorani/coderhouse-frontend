@@ -19,8 +19,9 @@ const AuthProvider = ({children}) => {
       loading,
       user,
       async login (userAutenticated) {
+        console.log("userautenticated", userAutenticated)
           setUser({
-            userName: userAutenticated
+            username: userAutenticated
             })
       },
       logout () {
