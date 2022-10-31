@@ -50,7 +50,7 @@ const modalMessageStyle = {
 const Appbar = ({shoppingCart, shoppingCartHandlers}) => {
 
   const auth = useAuth()
-
+  console.log("desde appbar", auth)
   const settings = [
     {label:'Profile',clickHandler: () => console.log("soy profile")},
     {label:'Account',clickHandler: () => console.log("soy account")}, 
@@ -111,6 +111,7 @@ const Appbar = ({shoppingCart, shoppingCartHandlers}) => {
   const handleMessageClose = () => {
     setOpenMessage({open:false})
     auth.logout()
+    navigate('/login')
   };
 
 
@@ -259,7 +260,7 @@ const Appbar = ({shoppingCart, shoppingCartHandlers}) => {
         onClose={handleMessageClose}
       >
         <Box sx={modalMessageStyle}>
-          <p className='logout-msg'>see you later <span className='logout-username'>{auth && auth.user?.userName}</span></p>
+          <p className='logout-msg'>see you later <span className='logout-username'>{auth && auth.user?.username}</span></p>
           <div className='logout-btn'>
             <Button variant="contained" onClick={() => handleMessageClose()}>
               Salir

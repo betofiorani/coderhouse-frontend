@@ -11,6 +11,7 @@ import { alertWithTimer, simpleAlert } from './helpers/alerts';
 import Swal from 'sweetalert2';
 import socketIO from 'socket.io-client';
 import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
 import AuthProvider from './components/Auth/AuthProvider';
 
 const socket = socketIO.connect('http://localhost:8080');
@@ -96,6 +97,7 @@ function App() {
       <AuthProvider>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/" element={<Layout shoppingCart={shoppingCart} shoppingCartHandlers={shoppingCartHandlers} />}>
             <Route index element={<Home />} />
             <Route path="/chat" element={<Chat socket={socket} />} />

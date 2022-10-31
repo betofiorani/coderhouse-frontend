@@ -1,35 +1,33 @@
 import React, {useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Button, TextField } from '@mui/material'
-import './LoginForm.css'
-import { login } from '../../services/loginService'
+import './RegisterForm.css'
+import { register } from '../../services/loginService'
 import Swal from 'sweetalert2'
 import useAuth from '../../hooks/useAuth'
 
-const LoginForm = () => {
+const RegisterForm = () => {
     const navigate = useNavigate()
     const auth = useAuth()
 
     const [user, setUser] = useState()
 
     const submitHandler = async (userData) => {
-        const response = await login(userData)
+        const response = await register(userData)
         if(response.status === "OK"){
-            auth.login(userData.username)
             Swal.fire({
                 icon: 'success', 
-                title: `<p>Login Successfully</p>`,
-                text: `welcome ${userData.username}`,
+                title: `<p>User created Successfully</p>`,
+                text: `welcome ${userData.firstName}`,
             }).then(async (res) => {
-                navigate('/')
+                navigate('/login')
             })
-
         }
         else {
             Swal.fire({
                 icon: 'error', 
-                title: `<p>Login incorrect</p>`,
-                text: `invalid credentials`,
+                title: `<p>Ooops....</p>`,
+                text: `something fail`,
             })
         }
     }
@@ -38,6 +36,33 @@ const LoginForm = () => {
         <div>
             <TextField 
                 className='login-form'
+                variant="filled"
+                required
+                fullWidth
+                label="Nombre"
+                placeholder='ingrese su nombre'
+                onChange={(e) => setUser({...user, firstName: e.target.value})} 
+            />
+            <TextField 
+                className='login-form m-top-20'
+                variant="filled"
+                required
+                fullWidth
+                label="Apellido"
+                placeholder='ingrese su Apellido'
+                onChange={(e) => setUser({...user, lastName: e.target.value})} 
+            />
+            <TextField 
+                className='login-form m-top-20'
+                variant="filled"
+                required
+                fullWidth
+                label="Email"
+                placeholder='ingrese su Email'
+                onChange={(e) => setUser({...user, email: e.target.value})} 
+            />
+            <TextField 
+                className='login-form m-top-20'
                 variant="filled"
                 required
                 fullWidth
@@ -60,12 +85,12 @@ const LoginForm = () => {
                     variant="contained"
                     onClick={() => submitHandler(user)}
                 >
-                    Ingresar
+                    Crear Cuenta
                 </Button>
-                <Link className='register' to="/register">crear cuenta</Link>
+                <Link className='register' to="/login">ya tengo cuenta</Link>
             </div>
         </div>
     )
 }
 
-export default LoginForm
+export default RegisterForm
