@@ -1,0 +1,25 @@
+.info-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+}
+
+.label {
+    color: black;
+    padding: 4px;
+    border: 1px solid blue;
+    margin-right: 10px;
+    background-color: aliceblue;
+}
+
+.info-container p {
+    margin: 10px 0;
+}
+
+.info-title {
+    color: blue;
+}

@@ -13,6 +13,8 @@ import socketIO from 'socket.io-client';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import AuthProvider from './components/Auth/AuthProvider';
+import ShowInfo from './components/ShowInfo/ShowInfo';
+import RandomProcess from './components/RandomProcess/RandomProcess';
 
 const socket = socketIO.connect('http://localhost:8080');
 
@@ -105,6 +107,8 @@ function App() {
             <Route path="/productos/:id" element={<Products />} />
             <Route path="/faker-productos" element={<FakerProducts />} />
             <Route path="/admin/productos" element={<AbmProducto />} />
+            <Route path="/info" element={<ShowInfo />} />
+            <Route path="/random" element={<RandomProcess />} />
           </Route>
         </Routes>
       </AuthProvider>
