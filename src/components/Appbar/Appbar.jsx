@@ -21,7 +21,14 @@ import useAuth from '../../hooks/useAuth'
 import { logout } from '../../services/loginService';
 import Swal from 'sweetalert2';
 
-const pages = [{title:'Products', path:'productos'}, {title:'Chat', path:'chat'}, {title:"ABM Products", path:'admin/productos'},{title:'Faker Products', path:'faker-productos'}];
+const pages = [
+  {title:'Products', path:'productos'}, 
+  {title:'Chat', path:'chat'}, 
+  {title:"ABM Products", path:'admin/productos'},
+  {title:'Faker Products', path:'faker-productos'},
+  {title:'Info App', path:'info'},
+  {title:'randoms', path:'random'},
+];
 
 const modalStyle = {
   position: 'absolute',
@@ -50,7 +57,6 @@ const modalMessageStyle = {
 const Appbar = ({shoppingCart, shoppingCartHandlers}) => {
 
   const auth = useAuth()
-  console.log("desde appbar", auth)
   const settings = [
     {label:'Profile',clickHandler: () => console.log("soy profile")},
     {label:'Account',clickHandler: () => console.log("soy account")}, 
