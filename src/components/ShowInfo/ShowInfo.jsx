@@ -28,7 +28,8 @@ const ShowInfo = props => {
 			<p><span className='label'>memoriaTotalReservada:</span> {info && info.memoriaTotalReservada}</p>
 			<p><span className='label'>Path Exec:</span> {info && info.pathExec}</p>
 			<p><span className='label'>Process Id:</span> {info && info.processId}</p>
-			<p><span className='label'>Carpeta Proyecto:</span> {info && info.carpetaProyecto}</p>				
+			<p><span className='label'>Carpeta Proyecto:</span> {info && info.carpetaProyecto}</p>
+			<p><span className='label'>Cantidad CPU:</span> {info && info.cantCPUs}</p>				
 		</div>
 	</div>
   )
