@@ -16,7 +16,7 @@ import AuthProvider from './components/Auth/AuthProvider';
 import ShowInfo from './components/ShowInfo/ShowInfo';
 import RandomProcess from './components/RandomProcess/RandomProcess';
 
-const socket = socketIO.connect('http://localhost:8080');
+const socket = socketIO.connect(process.env.REACT_APP_BACKEND_URL);
 
 function App() {
 
