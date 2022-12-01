@@ -14,14 +14,15 @@ const LoginForm = () => {
 
     const submitHandler = async (userData) => {
         const response = await login(userData)
-        if(response.status === "OK"){
-            auth.login(userData.username)
+        console.log("desde loginnnnnnnnnnnnn", response)
+        if(response){
+            auth.login(response.user)
             Swal.fire({
                 icon: 'success', 
                 title: `<p>Login Successfully</p>`,
                 text: `welcome ${userData.username}`,
             }).then(async (res) => {
-                navigate('/')
+                navigate('/productos')
             })
 
         }

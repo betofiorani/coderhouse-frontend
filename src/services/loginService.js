@@ -1,10 +1,12 @@
 import axios from 'axios'
 
+axios.defaults.withCredentials = true
+
 const baseUrl = process.env.REACT_APP_BACKEND_URL;
 const headers = {
   'Content-Type': 'application/json',
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, PUT, PATCH, POST, DELETE, OPTIONS',
+  'Access-Control-Allow-Methods': 'GET, PUT, PATCH, POST, DELETE',
   'Access-Control-Allow-Credentials': true
 };
 

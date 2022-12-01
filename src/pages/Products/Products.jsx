@@ -20,6 +20,7 @@ const Products = ({shoppingCartHandlers}) => {
 
     const getProductos = async () =>{ 
       const productos = await getProducts()
+      console.log("productos", productos)
       setProductos(productos)
     }
 
